@@ -4,12 +4,13 @@
 
     if(!empty($_POST)){
        $alert = ''; 
-       if(empty($_POST['nombre']) || empty($_POST['correo']) || empty($_POST['usuario']) || empty($_POST['clave']) || empty($_POST['rol'])){
+       if(empty($_POST['nombre']) || empty($_POST['correo']) || empty($_POST['usuario']) || empty($_POST['rol'])){
             $alert ='<p class="msg_error">Todos los campos son obligatorios<p/>';
        }else{
             //Conexion a la base de datos
             
             //preparacion de valores de los campos
+            $idusuario = mysqli_real_escape_string($conexion, $_POST['idusuario']);
             $nombre = mysqli_real_escape_string($conexion, $_POST['nombre']);
             $email = mysqli_real_escape_string($conexion, $_POST['correo']);
             $user = mysqli_real_escape_string($conexion, $_POST['usuario']);
@@ -18,7 +19,7 @@
 
             //Contrucion de la consulta INSERT utilizando mysqli_field
             $query = "INSERT INTO usuario(nombre, correo, usuario, clave, rol)
-                    VALUES ('$nombre','$email','$user','$clave','$rol')";
+                      VALUES ('$nombre','$email','$user','$clave','$rol')";
                    
             //ejecucion de la consulta
             if(mysqli_query($conexion,$query)){
@@ -80,12 +81,15 @@
             <div class="alert"><?php echo isset($alert) ? $alert :''; ?></div>
             <form action="" method="post">
                 <div class="mb-3">
+                    <input type="hidden" class="form-control" id="nombre" name="idusuario" value="<?php echo $iduser;?>">
+                </div>
+                <div class="mb-3">
                     <label for="nombre" class="form-label">Nombre</label>
-                    <input type="text" class="form-control" id="nombre" name="nombre" value="<?php echo $nombre ;?>" aria-describedby="emailHelp">
+                    <input type="text" class="form-control" id="nombre" name="nombre" value="<?php echo $nombre ;?>">
                 </div>
                 <div class="mb-3">
                     <label for="correo" class="form-label">Correo Electronico</label>
-                    <input type="email" class="form-control" id="correo" name="correo" value="<?php echo $correo ;?>">
+                    <input type="email" class="form-control" id="correo" name="correo" value="<?php echo $correo ;?>" aria-describedby="emailHelp">
                 </div>
                 <div class="mb-3">
                     <label for="usuario" class="form-label">Usuario</label>
