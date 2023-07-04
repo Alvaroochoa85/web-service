@@ -11,15 +11,15 @@
 				<li class="principal">
 					<a href="#">Clientes</a>
 					<ul>
-						<li><a href="#">Nuevo Cliente</a></li>
-						<li><a href="#">Lista de Clientes</a></li>
+						<li><a href="registroCliente">Nuevo Cliente</a></li>
+						<li><a href="listaCliente">Lista de Clientes</a></li>
 					</ul>
 				</li>
 				<li class="principal">
 					<a href="#">Pedidos</a>
 					<ul>
-						<li><a href="#">Nuevo Pedido</a></li>
-						<li><a href="#">Lista de Pedidos</a></li>
+						<li><a href="registroPedido.php">Nuevo Pedido</a></li>
+						<li><a href="listaPedido.php">Lista de Pedidos</a></li>
 					</ul>
 				</li>
 				<li class="principal">
